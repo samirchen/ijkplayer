@@ -16,15 +16,15 @@
 #
 
 # IJK_FFMPEG_UPSTREAM=git://git.videolan.org/ffmpeg.git
-IJK_FFMPEG_UPSTREAM=https://github.com/Bilibili/FFmpeg.git
-IJK_FFMPEG_FORK=https://github.com/Bilibili/FFmpeg.git
+IJK_FFMPEG_UPSTREAM=https://github.com/samirchen/FFmpeg.git
+IJK_FFMPEG_FORK=https://github.com/samirchen/FFmpeg.git
 IJK_FFMPEG_COMMIT=ff3.0--ijk0.4.5.1--dev0.4.5--rc10
 IJK_FFMPEG_LOCAL_REPO=extra/ffmpeg
 
-IJK_GASP_UPSTREAM=https://github.com/Bilibili/gas-preprocessor.git
+IJK_GASP_UPSTREAM=https://github.com/samirchen/gas-preprocessor.git
 
 # gas-preprocessor backup
-# https://github.com/Bilibili/gas-preprocessor.git
+# https://github.com/samirchen/gas-preprocessor.git
 
 if [ "$IJK_FFMPEG_REPO_URL" != "" ]; then
     IJK_FFMPEG_UPSTREAM=$IJK_FFMPEG_REPO_URL

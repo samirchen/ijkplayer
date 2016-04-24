@@ -134,7 +134,7 @@ sudo dpkg-reconfigure dash
 
 ### Build Android
 ```
-git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android
+git clone https://github.com/samirchen/ijkplayer.git ijkplayer-android
 cd ijkplayer-android
 git checkout -B latest k0.5.0
 
@@ -174,7 +174,7 @@ cd ..
 
 ### Build iOS
 ```
-git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-ios
+git clone https://github.com/samirchen/ijkplayer.git ijkplayer-ios
 cd ijkplayer-ios
 git checkout -B latest k0.5.0
 
