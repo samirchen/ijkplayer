@@ -1,1 +1,1 @@
-module-lite.sh
+module-cx.sh
