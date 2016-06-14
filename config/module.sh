@@ -1,1 +1,1 @@
-module-cx.sh
+module-lite-hevc.sh
