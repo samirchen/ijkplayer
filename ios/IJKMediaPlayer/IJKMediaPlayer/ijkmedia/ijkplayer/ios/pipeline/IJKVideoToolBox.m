@@ -281,6 +281,17 @@ void VTDecoderCallback(void *decompressionOutputRefCon,
             return;
         }
 
+        // Check sourceFrameRefCon pointer to avoid crash.
+        int32_t sampleCount = 0;
+        for (sampleCount = 0; sampleCount < VTB_MAX_DECODING_SAMPLES; sampleCount++) {
+            if ((sample_info *) sourceFrameRefCon == &ctx->sample_info_array[sampleCount]) {
+                break;
+            }
+        }
+        if (sampleCount >= VTB_MAX_DECODING_SAMPLES) {
+            return;
+        }
+
         FFPlayer   *ffp = ctx->ffp;
         VideoState *is  = ffp->is;
 
