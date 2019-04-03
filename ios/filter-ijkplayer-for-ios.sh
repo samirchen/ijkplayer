@@ -1,6 +1,10 @@
 #! /usr/bin/env bash
 #
 # Filter IJKPlayer project files for iOS.
+#
+# 201904
+# For IJKPlayer k0.8.8
+#
 
 
 # 1
@@ -24,6 +28,11 @@
 # ijksdl_vout_ios_gles2.m
 # ijkplayer_ios.m
 # ijksdl_aout_ios_audiounit.m
+#
+# Add <Compiler Flags> '-w' for these files:
+# ijkdic.c
+# ijkfifo.c
+# ijkstl.cpp
 
 # 4
 # You may get compiler errors like: 
@@ -45,15 +54,26 @@
 IJKMEDIAPLAYER_SOURCE_DIR="IJKMediaPlayer/IJKMediaPlayer"
 IJKMEDIAPLAYER_TARGET_DIR="../../IJKMediaPlayer_Project_Files"
 
+
+# Exclude files under 'ijkmedia/ijkplayer':
+# ijkmedia/ijkplayer/android
+# ijkmedia/ijkplayer/Android.mk
+# ijkmedia/ijkplayer/version.sh
+# ijkmedia/ijkplayer/ijkavformat/ijkioandroidio.c
+# ijkmedia/ijkplayer/ijkavformat/ijkmediadatasource.c
 IJKPLAYER_SOURCE_DIR="../ijkmedia/ijkplayer/*"
 IJKPLAYER_TARGET_DIR=$IJKMEDIAPLAYER_TARGET_DIR/IJKMediaPlayer/ijkmedia/ijkplayer
-IJKPLAYER_EXCLUDE_DIR_1=$IJKPLAYER_TARGET_DIR/android
-IJKPLAYER_EXCLUDE_DIR_2=$IJKPLAYER_TARGET_DIR/Android.mk
+IJKPLAYER_EXCLUDE_DIR="$IJKPLAYER_TARGET_DIR/android $IJKPLAYER_TARGET_DIR/Android.mk $IJKPLAYER_TARGET_DIR/version.sh $IJKPLAYER_TARGET_DIR/ijkavformat/ijkioandroidio.c $IJKPLAYER_TARGET_DIR/ijkavformat/ijkmediadatasource.c"
 
+# Exclude files under 'ijkmedia/ijksdl':
+# ijkmedia/ijksdl/android
+# ijkmedia/ijksdl/Android.mk
+# ijkmedia/ijksdl/ijksdl_container.h
+# ijkmedia/ijksdl/ijksdl_extra_log.h
+# ijkmedia/ijksdl/ijksdl_extra_log.c
 IJKSDL_SOURCE_DIR="../ijkmedia/ijksdl/*"
 IJKSDL_TARGET_DIR=$IJKMEDIAPLAYER_TARGET_DIR/IJKMediaPlayer/ijkmedia/ijksdl
-IJKSDL_EXCLUDE_DIR_1=$IJKSDL_TARGET_DIR/android
-IJKSDL_EXCLUDE_DIR_2=$IJKSDL_TARGET_DIR/Android.mk
+IJKSDL_EXCLUDE_DIR="$IJKSDL_TARGET_DIR/android $IJKSDL_TARGET_DIR/Android.mk $IJKSDL_TARGET_DIR/ijksdl_container.h $IJKSDL_TARGET_DIR/ijksdl_extra_log.h $IJKSDL_TARGET_DIR/ijksdl_extra_log.c"
 
 FFMPEG_LIB_SOURCE_DIR="build/universal"
 FFMPEG_LIB_TARGET_DIR=$IJKMEDIAPLAYER_TARGET_DIR/IJKMediaPlayer/ijkmedia
@@ -70,13 +90,11 @@ cp -r $IJKMEDIAPLAYER_SOURCE_DIR $IJKMEDIAPLAYER_TARGET_DIR
 
 # ijkplayer iOS source files.
 cp -r $IJKPLAYER_SOURCE_DIR $IJKPLAYER_TARGET_DIR
-rm -rf $IJKPLAYER_EXCLUDE_DIR_1
-rm -rf $IJKPLAYER_EXCLUDE_DIR_2
+rm -rf $IJKPLAYER_EXCLUDE_DIR
 
 # ijksdl iOS source files.
 cp -r $IJKSDL_SOURCE_DIR $IJKSDL_TARGET_DIR
-rm -rf $IJKSDL_EXCLUDE_DIR_1
-rm -rf $IJKSDL_EXCLUDE_DIR_2
+rm -rf $IJKSDL_EXCLUDE_DIR
 
 # FFmpeg lib files.
 cp -r $FFMPEG_LIB_SOURCE_DIR $FFMPEG_LIB_TARGET_DIR
